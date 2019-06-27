@@ -20,9 +20,9 @@
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cuestionarios <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Agregar Cuestionario</a></li>
-          <li><a href="#">Modificar Cuestionario</a></li>
-          <li><a href="#">Eliminar Cuestionario</a></li>
+          <li><a class="glyphicon glyphicon-plus" aria-heidden="true" href="cuestionario/agregar">Agregar Cuestionario</a></li>
+          <li><a class="glyphicon glyphicon-pencil" aria-heidden="true" href="#">Editar Cuestionario</a></li>
+          <li><a class="glyphicon glyphicon-remove" aria-heidden="true" href="#">Eliminar Cuestionario</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Encuestas <span class="caret"></span></a>
