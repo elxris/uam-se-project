@@ -13,7 +13,7 @@
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Preguntas <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Agregar Preguntas</a></li>
+          <li><a href="pregunta">Agregar Preguntas</a></li>
           <li><a href="#">Modificar Preguntas</a></li>
           <li><a href="#">Eliminar Preguntas</a></li>
         </ul>
