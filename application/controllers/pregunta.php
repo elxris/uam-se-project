@@ -5,19 +5,26 @@ class Pregunta extends CI_Controller {
 		function __construct(){
 		parent::__construct();
 		$this->load->helper('form');
-		#$this->load->model('is_model');
+		$this->load->model('modelo_pregunta');
 	}
 
 	public function index(){
-		$this->load->view('AgregarPregunta');
+                $this->load->view('headers');
+                $this->load->view('navbar');
+		$this->load->view('pregunta/AgregarPregunta');
+                $this->load->view('footer');
 	}
 
 	public function recibirDatos(){
 		$data = array(
 				'Nombre' => $this->input->post('Nombre'),
-				'Descripcion' => $this->input->post('Descripcion')
+				'Descripcion' => $this->input->post('Desc')
 		);
-		#$this->is_model->crearAlumno($data);
+		$this->modelo_pregunta->crearPregunta($data);
+                $this->load->view('headers');
+                $this->load->view('navbar');
+		$this->load->view('pregunta/AgregarPregunta');
+                $this->load->view('footer');
 	}
-
+     
 }
