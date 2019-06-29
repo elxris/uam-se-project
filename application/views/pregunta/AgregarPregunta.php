@@ -6,16 +6,18 @@
 		$nombre = array(
 			'name' => 'Nombre' ,
 			'placeholder' => 'Ingresa pregunta', 
-                        'class' => 'form-control'
+            'class' => 'form-control',
+            'required' => 'required'
                     );
 
 		$descripcion = array(
 			'name' => 'Desc' ,
 			'placeholder' => 'Ingresa una descripción',
-                        'class' => 'form-control'
+            'class' => 'form-control',
+            'required' => 'required'
 		);
                 
-                $botonGuardar = array(
+        $botonGuardar = array(
 			'value' => 'Registrar',
 			'name' => '' ,
 			'class' => 'btn btn-primary'
@@ -42,6 +44,4 @@
         <br>
     </div>			
 
-</div>
-	
 	<?= form_close() ?>
