@@ -26,5 +26,22 @@ class Pregunta extends CI_Controller {
 		$this->load->view('pregunta/AgregarPregunta');
                 $this->load->view('footer');
 	}
+
+	public function desplegar(){
+		$data['preguntas'] = $this->modelo_pregunta->obtenerPreguntas();
+        $this->load->view('headers');
+        $this->load->view('navbar');
+		$this->load->view('pregunta/eliminarPregunta',$data);
+        $this->load->view('footer');
+	}
+
+	public function eliminar(){
+		$data['valores'] = $this->input->post('eliminar[]');
+		$this->load->view('headers');
+        $this->load->view('navbar');
+		$this->load->view('pregunta/AgregarPregunta',$data);
+        $this->load->view('footer');
+	
+	}
      
 }

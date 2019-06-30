@@ -42,6 +42,8 @@
         <?= form_submit($botonGuardar) ?>
         <br>
         <br>
-    </div>			
+    </div>
+
+    <?php echo $valores?>			
 
 	<?= form_close() ?>
