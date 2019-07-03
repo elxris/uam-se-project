@@ -6,14 +6,14 @@
     <ul class="nav navbar-nav">
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Respuestas <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Agregar Respuesta</a></li>
+            <li><a href="/uam-se-project/respuesta/crear/1">Agregar Respuesta</a></li>
           <li><a href="#">Modificar Respuesta</a></li>
           <li><a href="#">Eliminar Respuesta</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Preguntas <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="pregunta">Agregar Preguntas</a></li>
+          <li><a href="/uam-se-project/pregunta">Agregar Preguntas</a></li>
           <li><a href="#">Modificar Preguntas</a></li>
           <li><a href="#">Eliminar Preguntas</a></li>
         </ul>
