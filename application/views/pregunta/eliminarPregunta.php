@@ -1,30 +1,20 @@
 <script>
-function alerta()
+function alerta(idP)
     {
-    var mensaje;
+    var base_url = window.location.origin;
     var opcion = confirm("¿Estás seguro que deseas eliminar la pregunta?");
     if (opcion == true) {
-        mensaje = true;
-	} else {
-	    mensaje = false;
+        document.location.href=base_url+"/uam-se-project/pregunta/eliminar/"+idP;
 	}
-	document.getElementById("ejemplo").innerHTML = mensaje;
 }
 
 <?php 
+    $test = 'prueba de test';
     $botonGuardar = array(
             'value' => 'Registrar',
             'name' => '' ,
             'class' => 'btn btn-primary'
     );
-
-    $elimina = array(
-            'value' => 'Eliminar',
-            'name' => 'elimina',
-            'class' => 'btn btn-danger',
-            'onclick' => 'alerta()'
-    );
-
 ?>
 </script>
 
@@ -52,7 +42,6 @@ function alerta()
                     </tr>
                 </thead>
                 <tbody>
-                <?= form_open("pregunta/eliminar") ?>
                 <?php
 	                if($preguntas){	
 	                    foreach ($preguntas->result() as $pregunta) { ?>
@@ -60,18 +49,16 @@ function alerta()
                         <td><?php echo $pregunta->idPregunta; ?></td>
                         <td><?php echo $pregunta->nombreCortoPregunta; ?></td>
                         <td><?php echo $pregunta->descripcionPregunta; ?></td>
-                        <td><?= form_submit($elimina)?></td>
+                        <td><input type="button" value="Eliminar" onclick="alerta(<?php echo $pregunta->idPregunta?>)" class="btn btn-danger"></input></td>
                     </tr>
                     <?php } 
 	                    }else{
 		                    echo "<p>No existe el elemento</p>";
 	                }
 	            ?>
-                <?= form_close() ?>
                 </tbody>
             </table>
             <div class="col-xs-6 offset-6">
-                <p id="ejemplo">En este párrafo se mostrará la opción clickada por el usuario</p>
             </div>
         </div>
     </div>

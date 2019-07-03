@@ -14,6 +14,11 @@ class Modelo_pregunta extends CI_Model {
 		if($query -> num_rows() > 0) return $query;
 		else return false; 
 	}
+
+	function eliminaPregunta($id){
+		$this->db->where('idPregunta',$id);
+		$this->db->delete('pregunta');
+	}
 }
 
 ?>
