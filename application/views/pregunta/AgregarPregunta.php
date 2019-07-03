@@ -1,29 +1,27 @@
 
-	<?= form_open("/pregunta/recibirDatos") ?>
+    <?= form_open("/pregunta/recibirDatos") ?>
 
-	<?php
+    <?php
 
-		$nombre = array(
-			'name' => 'Nombre' ,
-			'placeholder' => 'Ingresa pregunta', 
-            'class' => 'form-control',
-            'required' => 'required'
+        $nombre = array(
+            'name' => 'Nombre' ,
+            'placeholder' => 'Ingresa pregunta', 
+                        'class' => 'form-control'
+                    );
+
+        $descripcion = array(
+            'name' => 'Desc' ,
+            'placeholder' => 'Ingresa una descripción',
+                        'class' => 'form-control'
+        );
+                
+                $botonGuardar = array(
+            'value' => 'Registrar',
+            'name' => '' ,
+            'class' => 'btn btn-primary'
         );
 
-		$descripcion = array(
-			'name' => 'Desc' ,
-			'placeholder' => 'Ingresa una descripción',
-            'class' => 'form-control',
-            'required' => 'required'
-		);
-                
-        $botonGuardar = array(
-			'value' => 'Registrar',
-			'name' => '' ,
-			'class' => 'btn btn-primary'
-		);
-
-	?>
+    ?>
         
 <div class="container">
     <div class="col-4">
@@ -38,11 +36,13 @@
         <?= form_textarea($descripcion) ?>
         <br>
         <br>
+
         <?= form_submit($botonGuardar) ?>
+        <input type="button" ></input>
         <br>
         <br>
-    </div>			
+    </div>          
 
 </div>
-	
-	<?= form_close() ?>
+    
+    <?= form_close() ?>

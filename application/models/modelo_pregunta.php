@@ -6,7 +6,10 @@ class Modelo_pregunta extends CI_Model {
 		$this->load->database();
 	}
 	function crearPregunta($data){
-		$this->db->insert('pregunta',array('nombreCortoPregunta' => $data['Nombre'], 'descripcionPregunta' => $data['Descripcion']));
+		if($data['Nombre'] != '0'){
+			$this->db->insert('pregunta',array('nombreCortoPregunta' => $data['Nombre'], 'descripcionPregunta' => $data['Descripcion']));
+		}
+		
 	}
 
 	function obtenerPreguntas(){
