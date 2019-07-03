@@ -13,9 +13,9 @@
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Preguntas <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="pregunta">Agregar Preguntas</a></li>
+          <li><a href="http://localhost/uam-se-project/pregunta/recibirDatos"?>Agregar Preguntas</a></li>
           <li><a href="#">Modificar Preguntas</a></li>
-          <li><a href="#">Eliminar Preguntas</a></li>
+          <li><a href="http://localhost/uam-se-project/pregunta/verPreguntas">Eliminar Preguntas</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cuestionarios <span class="caret"></span></a>
