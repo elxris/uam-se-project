@@ -38,7 +38,6 @@
         <br>
 
         <?= form_submit($botonGuardar) ?>
-        <input type="button" ></input>
         <br>
         <br>
     </div>          

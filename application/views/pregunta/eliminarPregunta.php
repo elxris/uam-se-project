@@ -8,6 +8,18 @@ function alerta(idP)
 	}
 }
 
+function confirmaEliminarTodo()
+    {
+    var base_url = window.location.origin;
+    var opcion = confirm("¿Estás seguro que deseas eliminar todas las preguntas?");
+    if (opcion == true) {
+        document.location.href=base_url+"/uam-se-project/pregunta/eliminarTodo/";
+    }
+}
+
+
+</script>
+
 <?php 
     $test = 'prueba de test';
     $botonGuardar = array(
@@ -16,7 +28,6 @@ function alerta(idP)
             'class' => 'btn btn-primary'
     );
 ?>
-</script>
 
 <title>Eliminar preguntas</title>
 	<div class="container">
@@ -31,6 +42,11 @@ function alerta(idP)
                         <input type="text" class="form-control">
                     </div>
                 </div>
+                <div class="col-md-2 col-md-offset-10">
+                        <button class="btn btn-danger" type="button" onclick="confirmaEliminarTodo()">Eliminar todo</button>
+                </div>
+       
+   
             </div>
             <br>
             <table class="table">

@@ -42,4 +42,13 @@ class Pregunta extends CI_Controller {
 		$this->load->view('pregunta/eliminarPregunta',$data);
         $this->load->view('footer');
     }
+
+    public function eliminarTodo(){
+		$this->modelo_pregunta->eliminarTodas();
+		$data['preguntas'] = $this->modelo_pregunta->obtenerPreguntas();
+		$this->load->view('headers');
+        $this->load->view('navbar');
+		$this->load->view('pregunta/eliminarPregunta',$data);
+        $this->load->view('footer');
+    }
 }
