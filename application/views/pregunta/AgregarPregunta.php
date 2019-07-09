@@ -14,12 +14,7 @@
             'placeholder' => 'Ingresa una descripción',
                         'class' => 'form-control'
         );
-                
-                $botonGuardar = array(
-            'value' => 'Registrar',
-            'name' => '' ,
-            'class' => 'btn btn-primary'
-        );
+        
 
     ?>
         
@@ -29,15 +24,15 @@
         <br>
         <br>
         <?= form_label('Nombre: ', 'nombre') ?>
-        <?= form_input($nombre) ?>
+        <?= form_input($nombre, null, 'required') ?>
         </br>
         </br>
         <?= form_label('Descripción: ', 'descripcion') ?>
-        <?= form_textarea($descripcion) ?>
+        <?= form_textarea($descripcion, null, 'required') ?>
         <br>
         <br>
 
-        <?= form_submit($botonGuardar) ?>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Guardar</button>
         <br>
         <br>
     </div>          

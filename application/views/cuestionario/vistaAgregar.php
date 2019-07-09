@@ -6,16 +6,15 @@
           <div class="form-group">
             <label form="inputEmail3" class="col-sm-4 control-label">Nombre del cuestionario:  </label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="nombreCuestionario" name="nombreCuestionario" placeholder="Ingresa el nombre del cuestionario">
+              <input type="text" class="form-control" id="nombreCuestionario" name="nombreCuestionario" placeholder="Ingresa el nombre del cuestionario" required>
             </div>
           </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success glyphicon glyphicon-save" aria-heidden="true" id="guardar" name="guardar">Guardar</button>
+              <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Guardar</button>
               </div>
             </div>
         </form>
     </div>
   </div>
 </div>
-
