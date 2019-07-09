@@ -9,7 +9,14 @@ class modelo_cuestionario extends CI_Model{
     function guardarCuestionario($data){
         $this->db->insert('cuestionario', $data);
     }
-    
+    function verTodo(){
+        $query = $this->db->get('cuestionario');
+        if($query->num_rows() > 0){
+            return $query;
+        }
+        else
+            return FALSE;
+    }
     function obtenerTodos(){
         try {
             return $this->db->get('cuestionario');
@@ -55,4 +62,3 @@ class modelo_cuestionario extends CI_Model{
         }
     }
 }
-
