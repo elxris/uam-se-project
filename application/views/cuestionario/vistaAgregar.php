@@ -6,7 +6,7 @@
           <div class="form-group">
             <label form="inputEmail3" class="col-sm-4 control-label">Nombre del cuestionario:  </label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="nombreCuestionario" name="nombreCuestionario" placeholder="Ingresa el nombre del cuestionario">
+              <input type="text" class="form-control" id="nombreCuestionario" name="nombreCuestionario" placeholder="Ingresa el nombre del cuestionario" required>
             </div>
           </div>
             <div class="form-group">
