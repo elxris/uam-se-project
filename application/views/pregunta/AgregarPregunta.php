@@ -29,11 +29,11 @@
         <br>
         <br>
         <?= form_label('Nombre: ', 'nombre') ?>
-        <?= form_input($nombre) ?>
+        <?= form_input($nombre, null, 'required') ?>
         </br>
         </br>
         <?= form_label('Descripción: ', 'descripcion') ?>
-        <?= form_textarea($descripcion) ?>
+        <?= form_textarea($descripcion, null, 'required') ?>
         <br>
         <br>
 
