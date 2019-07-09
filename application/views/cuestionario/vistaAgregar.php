@@ -11,7 +11,7 @@
           </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success glyphicon glyphicon-save" aria-heidden="true" id="guardar" name="guardar">Guardar</button>
+              <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Guardar</button>
               </div>
             </div>
         </form>
