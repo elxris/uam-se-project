@@ -5,13 +5,15 @@ class Cuestionario extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->helper('form');
         $this->load->model('modelo_cuestionario');
     }
 
     public function index(){
-        /*$this->load->view('welcome_message');*/
+        $data = array('resultado' => $this->modelo_cuestionario->obtenerTodos());
         $this->load->view('headers');
         $this->load->view('navbar');
+        $this->load->view('cuestionario/lista', $data);
         $this->load->view('footer');
     }
     
@@ -27,17 +29,44 @@ class Cuestionario extends CI_Controller {
             'nombreCuestionario' => $this->input->post('nombreCuestionario', TRUE)
         );
         $this->modelo_cuestionario->guardarCuestionario($data);
-        redirect('cuestionario/agregar');
+        redirect('/cuestionario/agregar');
     }
     
-    function ver(){
-        $data = array(
-            'cuestionario' => $this->modelo_cuestionario->verTodo(),
-            'dump' => 0
-        );
+    function preguntas() {
+        $idCuestionario = $this->uri->segment(3);
+        $cuestionario = $this->modelo_cuestionario->obtener($idCuestionario);
+        $preguntas = $this->modelo_cuestionario->obtenerPreguntas($idCuestionario);
+        $data = array('id' => $idCuestionario, 'cuestionario' => $cuestionario, 'preguntas' => $preguntas);
         $this->load->view('headers');
         $this->load->view('navbar');
-        $this->load->view('cuestionario/verCuestionarios', $data);
+        if ($cuestionario == false || $preguntas == false) {
+            echo 'Error al consultar la base de datos';
+        } else {
+            $this->load->view('cuestionario/listaPreguntas', $data);
+        }
         $this->load->view('footer');
+    }
+    
+    function agregarPregunta(){
+        $this->load->model('modelo_pregunta');
+        $idCuestionario = $this->uri->segment(3);
+        $cuestionario = $this->modelo_cuestionario->obtener($idCuestionario);
+        $preguntas = $this->modelo_pregunta->obtenerPreguntas();
+        $data = array('id' => $idCuestionario, 'cuestionario' => $cuestionario, 'preguntas' => $preguntas);
+        $this->load->view('headers');
+        $this->load->view('navbar');
+        if ($cuestionario == false || $preguntas == false) {
+            echo 'Error al consultar la base de datos';
+        } else {
+            $this->load->view('cuestionario/agregarPreguntaFormulario', $data);
+        }
+        $this->load->view('footer');
+    }
+    
+    function guardarPregunta() {
+        $idCuestionario = $this->uri->segment(3);
+        $idPregunta = $this->input->post('idPregunta');
+        $this->modelo_cuestionario->guardarPregunta(array('idCuestionario' => $idCuestionario, 'idPregunta' => $idPregunta));
+        redirect('/cuestionario/preguntas/'.$idCuestionario);
     }
 }

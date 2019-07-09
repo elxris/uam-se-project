@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit ('No direct 	script access allowed');
+<?php if ( ! defined('BASEPATH')) exit ('No direct script access allowed');
 
 class Modelo_pregunta extends CI_Model {
 	function __construct(){
@@ -6,7 +6,23 @@ class Modelo_pregunta extends CI_Model {
 		$this->load->database();
 	}
 	function crearPregunta($data){
-		$this->db->insert('pregunta',array('nombreCortoPregunta' => $data['Nombre'], 'descripcionPregunta' => $data['Descripcion']));
+		if($data['Nombre'] != '0'){
+			$this->db->insert('pregunta',array('nombreCortoPregunta' => $data['Nombre'], 'descripcionPregunta' => $data['Descripcion']));
+		}
+	}
+	function obtenerPreguntas(){
+		$query = $this->db->get('pregunta');
+		if($query -> num_rows() > 0) return $query;
+		else return false; 
+	}
+
+	function eliminaPregunta($id){
+		$this->db->where('idPregunta',$id);
+		$this->db->delete('pregunta');
+	}
+
+	function eliminarTodas(){
+		$this->db->empty_table('pregunta');
 	}
 }
 

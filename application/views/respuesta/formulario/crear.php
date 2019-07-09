@@ -6,9 +6,9 @@
 <?= form_open('respuesta/recibirDatos', '', $hidden) ?>
 <div class="form-group">
     <?= form_label('Respuesta:', 'nombreRespuesta', array('class'=>'col-sm-12')) ?>
-    <?= form_textarea(array('name'=>'nombreRespuesta','value'=>'','class'=>'form-control')) ?>
+    <?= form_textarea(array('name'=>'nombreRespuesta','value'=>'','class'=>'form-control', 'required'=>true)) ?>
 </div>
-<?= form_submit(array('name' => 'sumbmit', 'value'=>'Crear', 'class'=>'btn btn-success')); ?>
+<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Guardar</button>
 <?= form_close() ?>
         </div>
     </div>
