@@ -10,7 +10,7 @@
     }
     echo form_dropdown('idPregunta', $options, $preguntas->result()[0]->idPregunta, 'class="form-control"');
     ?></div><?php
-    ?><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Agregar</button><?php
+    ?><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Guardar</button><?php
     echo form_close();
 ?>
 </div>

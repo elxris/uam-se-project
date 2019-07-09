@@ -14,12 +14,7 @@
             'placeholder' => 'Ingresa una descripción',
                         'class' => 'form-control'
         );
-                
-                $botonGuardar = array(
-            'value' => 'Registrar',
-            'name' => '' ,
-            'class' => 'btn btn-primary'
-        );
+        
 
     ?>
         
@@ -37,7 +32,7 @@
         <br>
         <br>
 
-        <?= form_submit($botonGuardar) ?>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Guardar</button>
         <br>
         <br>
     </div>          
