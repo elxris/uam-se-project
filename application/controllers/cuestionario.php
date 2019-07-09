@@ -29,4 +29,15 @@ class Cuestionario extends CI_Controller {
         $this->modelo_cuestionario->guardarCuestionario($data);
         redirect('cuestionario/agregar');
     }
+    
+    function ver(){
+        $data = array(
+            'cuestionario' => $this->modelo_cuestionario->verTodo(),
+            'dump' => 0
+        );
+        $this->load->view('headers');
+        $this->load->view('navbar');
+        $this->load->view('cuestionario/verCuestionarios', $data);
+        $this->load->view('footer');
+    }
 }
