@@ -4,13 +4,6 @@
             <h1 class="text-center">Encuestas </h1>
             <br/>
             <br/>
-            <br/>
-            <thead>
-                <!--<tr>
-                    <th scope="col" class="text-center"> Encuestas </th>
-                    <!--<th scope="col"> id Cuestionario </th>
-                </tr> -->
-            </thead>
             <tbody>
                 <?php
                 if($encuesta != FALSE){
@@ -18,12 +11,10 @@
                         echo "<tr>";
                         echo "<th>".$row->nombreEncuesta."</th>";
                         echo "<td></td>";
-                        echo "<td><a class='btn btn-primary' href=".base_url()."cuestionario/index/".$row->idEncuesta."> Editar "
-                            . "<samp class='glyphicon glyphicon-pencil' aria-heidden='TRUE'></samp>"
-                            . "</a> ";
-                        echo "<td><a class='btn btn-danger' href=".base_url()."cuestionario/index/".$row->idEncuesta."> Eliminar "
-                            . "<samp class='glyphicon glyphicon-remove' aria-heidden='TRUE'></samp>"
-                            . "</a> ";
+                        echo "<td><a class='btn btn-primary' href=".base_url()."encuesta/editar/".$row->idEncuesta."> Editar "
+                            . "<samp class='glyphicon glyphicon-pencil' aria-heidden='TRUE'></samp>"."</a> ";
+                        echo "<td><a class='btn btn-danger' href=".base_url()."encuesta/eliminar/".$row->idEncuesta."> Eliminar "
+                            . "<samp class='glyphicon glyphicon-remove' aria-heidden='TRUE'></samp>"."</a> ";
                         echo"</tr>";    
                     }
                 }
