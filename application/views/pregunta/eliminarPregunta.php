@@ -1,24 +1,3 @@
-<script>
-function alerta(idP)
-    {
-    var base_url = window.location.origin;
-    var opcion = confirm("¿Estás seguro que deseas eliminar la pregunta?");
-    if (opcion == true) {
-        document.location.href=base_url+"/uam-se-project/pregunta/eliminar/"+idP;
-	}
-}
-
-function confirmaEliminarTodo()
-    {
-    var base_url = window.location.origin;
-    var opcion = confirm("¿Estás seguro que deseas eliminar todas las preguntas?");
-    if (opcion == true) {
-        document.location.href=base_url+"/uam-se-project/pregunta/eliminarTodo/";
-    }
-}
-
-
-</script>
 
 <?php 
     $test = 'prueba de test';
@@ -42,11 +21,6 @@ function confirmaEliminarTodo()
                         <input type="text" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-2 col-md-offset-10">
-                        <button class="btn btn-danger" type="button" onclick="confirmaEliminarTodo()">Eliminar todo</button>
-                </div>
-       
-   
             </div>
             <br>
             <table class="table">
@@ -65,7 +39,7 @@ function confirmaEliminarTodo()
                         <td><?php echo $pregunta->idPregunta; ?></td>
                         <td><?php echo $pregunta->nombreCortoPregunta; ?></td>
                         <td><?php echo $pregunta->descripcionPregunta; ?></td>
-                        <td><input type="button" value="Eliminar" onclick="alerta(<?php echo $pregunta->idPregunta?>)" class="btn btn-danger"></input></td>
+                        <td><a href="http://localhost/uam-se-project/pregunta/eliminar/<?php echo $pregunta->idPregunta; ?>" class="btn btn-danger" value="Eliminar">Eliminar</a></td>
                     </tr>
                     <?php } 
 	                    }else{
