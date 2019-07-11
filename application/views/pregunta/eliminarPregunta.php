@@ -39,7 +39,7 @@
                         <td><?php echo $pregunta->idPregunta; ?></td>
                         <td><?php echo $pregunta->nombreCortoPregunta; ?></td>
                         <td><?php echo $pregunta->descripcionPregunta; ?></td>
-                        <td><a href="http://localhost/uam-se-project/pregunta/eliminar/<?php echo $pregunta->idPregunta; ?>" class="btn btn-danger" value="Eliminar">Eliminar</a></td>
+                        <td><a href="/uam-se-project/pregunta/eliminar/<?php echo $pregunta->idPregunta; ?>" class="btn btn-danger" value="Eliminar">Eliminar</a></td>
                     </tr>
                     <?php } 
 	                    }else{

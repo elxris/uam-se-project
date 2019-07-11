@@ -38,5 +38,13 @@ class Respuesta extends CI_Controller {
             redirect('/pregunta/');
         }
     }
+    
+    public function verRespuestas(){
+		$data['respuestas'] = $this->modelo_respuesta->obtenerRespuestas();
+                $this->load->view('headers');
+                $this->load->view('navbar');
+		$this->load->view('respuesta/eliminarRespuesta',$data);
+                $this->load->view('footer');
+	}
 
 }
