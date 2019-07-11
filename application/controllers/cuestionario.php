@@ -36,7 +36,12 @@ class Cuestionario extends CI_Controller {
         $idCuestionario = $this->uri->segment(3);
         $cuestionario = $this->modelo_cuestionario->obtener($idCuestionario);
         $preguntas = $this->modelo_cuestionario->obtenerPreguntas($idCuestionario);
-        $data = array('id' => $idCuestionario, 'cuestionario' => $cuestionario, 'preguntas' => $preguntas);
+        $preguntasRestantes = $this->modelo_cuestionario->obtenerPreguntasRestantes($idCuestionario);
+        $data = array(
+            'id' => $idCuestionario,
+            'cuestionario' => $cuestionario,
+            'preguntas' => $preguntas,
+            'preguntasRestantes' => $preguntasRestantes);
         $this->load->view('headers');
         $this->load->view('navbar');
         if ($cuestionario == false || $preguntas == false) {
@@ -50,23 +55,15 @@ class Cuestionario extends CI_Controller {
     function agregarPregunta(){
         $this->load->model('modelo_pregunta');
         $idCuestionario = $this->uri->segment(3);
-        $cuestionario = $this->modelo_cuestionario->obtener($idCuestionario);
-        $preguntas = $this->modelo_pregunta->obtenerPreguntas();
-        $data = array('id' => $idCuestionario, 'cuestionario' => $cuestionario, 'preguntas' => $preguntas);
-        $this->load->view('headers');
-        $this->load->view('navbar');
-        if ($cuestionario == false || $preguntas == false) {
-            echo 'Error al consultar la base de datos';
-        } else {
-            $this->load->view('cuestionario/agregarPreguntaFormulario', $data);
-        }
-        $this->load->view('footer');
+        $idPregunta = $this->uri->segment(4);
+        $this->modelo_cuestionario->guardarPregunta($idCuestionario, $idPregunta);
+        redirect('/cuestionario/preguntas/'.$idCuestionario);
     }
-    
-    function guardarPregunta() {
+    function borrarPregunta(){
+        $this->load->model('modelo_pregunta');
         $idCuestionario = $this->uri->segment(3);
-        $idPregunta = $this->input->post('idPregunta');
-        $this->modelo_cuestionario->guardarPregunta(array('idCuestionario' => $idCuestionario, 'idPregunta' => $idPregunta));
+        $idPregunta = $this->uri->segment(4);
+        $this->modelo_cuestionario->borrarPregunta($idCuestionario, $idPregunta);
         redirect('/cuestionario/preguntas/'.$idCuestionario);
     }
 }

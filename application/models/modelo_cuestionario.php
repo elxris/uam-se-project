@@ -43,7 +43,28 @@ class modelo_cuestionario extends CI_Model{
             return false;
         }
     }
-    function guardarPregunta($data) {
+    function obtenerPreguntasRestantes($idCuestionario) {
+        $this->db->select('*, pregunta.idPregunta as idPregunta');
+        $this->db->from('pregunta');
+        $this->db->join('pregunta_cuestionario', 'pregunta_cuestionario.idPregunta = pregunta.idPregunta', 'left');
+        //$this->db->where('pregunta_cuestionario.idCuestionario !=', $idCuestionario);
+        $query = $this->db->get();
+        echo $this->db->last_query();
+        return $query;
+    }
+    function borrarPregunta($idCuestionario, $idPregunta) {
+        try {
+            $data = array(
+                'idCuestionario' => $idCuestionario,
+                'idPregunta' => $idPregunta
+            );
+            $this->db->delete('pregunta_cuestionario', $data);
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+    function guardarPregunta($idCuestionario, $idPregunta) {
         try {
             $this->db->select('*');
             $this->db->from('pregunta_cuestionario');
@@ -55,8 +76,13 @@ class modelo_cuestionario extends CI_Model{
             } else {
                 $lastSeq = 1;
             }
-            $data['secuencia'] = $lastSeq + 1;
+            $data = array(
+                'idCuestionario' => $idCuestionario,
+                'idPregunta' => $idPregunta,
+                'secuencia' => $lastSeq + 1
+            );
             $this->db->insert('pregunta_cuestionario', $data);
+            return true;
         } catch (Exception $ex) {
             return false;
         }
