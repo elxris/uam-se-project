@@ -28,7 +28,7 @@
         </br>
         </br>
         <?= form_label('Descripción: ', 'descripcion') ?>
-        <?= form_textarea($descripcion, null, 'required') ?>
+        <?= form_textarea($descripcion, null) ?>
         <br>
         <br>
 

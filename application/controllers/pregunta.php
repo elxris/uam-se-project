@@ -28,27 +28,18 @@ class Pregunta extends CI_Controller {
 	}
 	public function verPreguntas(){
 		$data['preguntas'] = $this->modelo_pregunta->obtenerPreguntas();
-        $this->load->view('headers');
-        $this->load->view('navbar');
+                $this->load->view('headers');
+                $this->load->view('navbar');
 		$this->load->view('pregunta/eliminarPregunta',$data);
-        $this->load->view('footer');
+                $this->load->view('footer');
 	}
 	public function eliminar(){
 		$id = $this->uri->segment(3);
 		$this->modelo_pregunta->eliminaPregunta($id);
 		$data['preguntas'] = $this->modelo_pregunta->obtenerPreguntas();
 		$this->load->view('headers');
-        $this->load->view('navbar');
+                $this->load->view('navbar');
 		$this->load->view('pregunta/eliminarPregunta',$data);
-        $this->load->view('footer');
-    }
-
-    public function eliminarTodo(){
-		$this->modelo_pregunta->eliminarTodas();
-		$data['preguntas'] = $this->modelo_pregunta->obtenerPreguntas();
-		$this->load->view('headers');
-        $this->load->view('navbar');
-		$this->load->view('pregunta/eliminarPregunta',$data);
-        $this->load->view('footer');
+                $this->load->view('footer');
     }
 }

@@ -19,10 +19,6 @@ class Modelo_pregunta extends CI_Model {
 		$this->db->where('idPregunta',$id);
 		$this->db->delete('pregunta');
 	}
-
-	function eliminarTodas(){
-		$this->db->empty_table('pregunta');
-	}
 }
 
 ?>
