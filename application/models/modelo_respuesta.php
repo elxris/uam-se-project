@@ -11,8 +11,9 @@ class Modelo_Respuesta extends CI_Model {
             'nombreRespuesta' => $data['nombreRespuesta']
         ));
     }
-    function obtenerRespuestas(){
-		$query = $this->db->get('respuesta');
+    function obtenerRespuestas($id){
+		$this->db->where('idPregunta',$id);
+        $query = $this->db->get('respuesta');
 		if($query -> num_rows() > 0) return $query;
 		else return false; 
 	}

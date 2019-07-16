@@ -10,6 +10,7 @@ class Respuesta extends CI_Controller {
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->model('modelo_respuesta');
+        $this->load->model('modelo_pregunta');
     }
 
     public function index() {
@@ -40,11 +41,13 @@ class Respuesta extends CI_Controller {
     }
     
     public function verRespuestas(){
-		$data['respuestas'] = $this->modelo_respuesta->obtenerRespuestas();
-                $this->load->view('headers');
-                $this->load->view('navbar');
-		$this->load->view('respuesta/eliminarRespuesta',$data);
-                $this->load->view('footer');
+        $id = $this->uri->segment(3);
+		$data['respuestas'] = $this->modelo_respuesta->obtenerRespuestas($id);
+        $data['pregunta'] = $this->modelo_pregunta->obtenerPregunta($id);
+        $this->load->view('headers');
+        $this->load->view('navbar');
+		$this->load->view('respuesta/listaRespuestas',$data,$data);
+        $this->load->view('footer');
 	}
 
 }
