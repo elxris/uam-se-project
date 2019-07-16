@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label class="col-4">Descripción de la Encuesta: </label>
                 <div class="col-4">
-                    <textarea type="text" class="form-control" id="descripcionCuestionario" name="descripcionEncuesta" rows="7" placeholder="Ingrese una descripcion de la encuesta" required></textarea>
+                    <textarea type="text" class="form-control" id="descripcionEncuesta" name="descripcionEncuesta" rows="7" placeholder="Ingrese una descripcion de la encuesta" required></textarea>
                 </div>
             </div>
         </div>
