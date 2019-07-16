@@ -5,16 +5,9 @@
       <a class="navbar-brand" href="#">Sistema</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Respuestas <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="/uam-se-project/respuesta/crear/1">Agregar Respuesta</a></li>
-          <li><a href="#">Modificar Respuesta</a></li>
-          <li><a href="/uam-se-project/respuesta/verRespuestas">Eliminar Respuesta</a></li>
-        </ul>
-      </li>
       <li><a href="<?= base_url('/pregunta')?>"><span class="glyphicon glyphicon-question-sign"></span> Preguntas</a></li>
       <li><a href="<?= base_url('/cuestionario') ?>"><span class="glyphicon glyphicon-check"></span> Cuestionarios</a></li>
-      <li><a href="/encuesta/verTodo"><span class="glyphicon glyphicon-list-alt"> Encuestas</a></ul>
+      <li><a href="<?= base_url('/encuesta/verTodo') ?>"><span class="glyphicon glyphicon-list-alt"> Encuestas</a></ul>
       </li>
     </ul>
   </div>

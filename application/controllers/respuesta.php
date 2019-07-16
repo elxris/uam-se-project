@@ -36,7 +36,7 @@ class Respuesta extends CI_Controller {
         $data = $this->input->post();
         if($data){
             $this->modelo_respuesta->crear($data);
-            redirect('/pregunta/');
+            redirect('/respuesta/verRespuestas/'.$data['idPregunta']);
         }
     }
     
@@ -46,20 +46,15 @@ class Respuesta extends CI_Controller {
         $data['pregunta'] = $this->modelo_pregunta->obtenerPregunta($id);
         $this->load->view('headers');
         $this->load->view('navbar');
-		$this->load->view('respuesta/listaRespuestas',$data,$data);
+		$this->load->view('respuesta/listaRespuestas',$data);
         $this->load->view('footer');
 	}
 
     public function eliminar(){
-                $id = $this->uri->segment(3);
-                $idP = $this->uri->segment(4);
-                $this->modelo_respuesta->eliminaRespuesta($id);
-                $data['respuestas'] = $this->modelo_respuesta->obtenerRespuestas($idP);
-                $data['pregunta'] = $this->modelo_pregunta->obtenerPregunta($idP);
-                $this->load->view('headers');
-                $this->load->view('navbar');
-                $this->load->view('respuesta/listaRespuestas',$data,$data);
-                $this->load->view('footer');
+        $id = $this->uri->segment(3);
+        $idP = $this->uri->segment(4);
+        $this->modelo_respuesta->eliminaRespuesta($id, $idP);
+        redirect('/respuesta/verRespuestas/'.$idP);
     }
 
 }

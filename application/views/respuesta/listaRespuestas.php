@@ -7,7 +7,7 @@
                             }
                 ?></h2>
             <table class="table">
-                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>Agregar</button>
+                <a href="<?= base_url('/respuesta/crear/'.$pregunta->row()->idPregunta) ?>" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>Agregar</a>
                 <thead>
                      <tr>
                         <th scope="col">Respuestas</th>
@@ -20,7 +20,7 @@
                     <tr>
                         <td><?php echo $respuesta->nombreRespuesta; ?></td>
                         <td>
-                            <a class="btn btn-xs btn-success" href="<?= base_url() ?>"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
+                            <a class="btn btn-xs btn-success" href="#"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
                             <a class="btn btn-xs btn-danger" href="<?= base_url('/respuesta/eliminar/'.$respuesta->idRespuesta.'/'.$respuesta->idPregunta) ?>"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
                         </td>
                     </tr>

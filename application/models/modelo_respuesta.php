@@ -18,8 +18,9 @@ class Modelo_Respuesta extends CI_Model {
 		else return false; 
 	}
 
-    function eliminaRespuesta($id){
+    function eliminaRespuesta($id, $idPregunta){
         $this->db->where('idRespuesta',$id);
+        $this->db->where('idPregunta',$idPregunta);
         $this->db->delete('respuesta');
     }
 }

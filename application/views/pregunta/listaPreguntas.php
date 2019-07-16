@@ -38,7 +38,7 @@
                         <td><?php echo $pregunta->nombreCortoPregunta; ?></td>
                         <td><?php echo $pregunta->descripcionPregunta; ?></td>
                         <td>
-                            <a class="btn btn-xs btn-primary" href="<?= base_url('respuesta/verRespuestas/'.$pregunta->idPregunta) ?>"><span class="glyphicon glyphicon-th-list"></span>Respuestas</a>
+                            <a class="btn btn-xs btn-primary" href="<?= base_url('/respuesta/verRespuestas/'.$pregunta->idPregunta) ?>"><span class="glyphicon glyphicon-th-list"></span>Respuestas</a>
                             <a class="btn btn-xs btn-success" href="<?= base_url() ?>"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
                             <a class="btn btn-xs btn-danger" href="<?= base_url('/pregunta/eliminar/'.$pregunta->idPregunta) ?>"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
                         </td>
