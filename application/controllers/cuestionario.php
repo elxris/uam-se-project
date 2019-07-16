@@ -29,7 +29,7 @@ class Cuestionario extends CI_Controller {
             'nombreCuestionario' => $this->input->post('nombreCuestionario', TRUE)
         );
         $this->modelo_cuestionario->guardarCuestionario($data);
-        redirect('/cuestionario/agregar');
+        redirect('/cuestionario');
     }
     
     function preguntas() {
@@ -64,6 +64,20 @@ class Cuestionario extends CI_Controller {
         $idCuestionario = $this->uri->segment(3);
         $idPregunta = $this->uri->segment(4);
         $this->modelo_cuestionario->borrarPregunta($idCuestionario, $idPregunta);
+        redirect('/cuestionario/preguntas/'.$idCuestionario);
+    }
+    function moverArriba(){
+        $this->load->model('modelo_pregunta');
+        $idCuestionario = $this->uri->segment(3);
+        $idPregunta = $this->uri->segment(4);
+        $this->modelo_cuestionario->moverArriba($idCuestionario, $idPregunta);
+        redirect('/cuestionario/preguntas/'.$idCuestionario);
+    }
+    function moverAbajo(){
+        $this->load->model('modelo_pregunta');
+        $idCuestionario = $this->uri->segment(3);
+        $idPregunta = $this->uri->segment(4);
+        $this->modelo_cuestionario->moverAbajo($idCuestionario, $idPregunta);
         redirect('/cuestionario/preguntas/'.$idCuestionario);
     }
 }

@@ -42,8 +42,8 @@
                 <td><?= $row->nombreCortoPregunta ?></td>
                 <td>
                     <a href="<?= base_url('/cuestionario/borrarPregunta/'.$id.'/'.$row->idPregunta) ?>" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Borrar del cuestionario</a>
-                    <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span> Subir</a>
-                    <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-down"></span> Bajar</a>
+                    <a href="<?= base_url('/cuestionario/moverArriba/'.$id.'/'.$row->idPregunta) ?>" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span> Subir</a>
+                    <a href="<?= base_url('/cuestionario/moverAbajo/'.$id.'/'.$row->idPregunta) ?>" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-down"></span> Bajar</a>
                 </td>
             </tr>
         <?php
