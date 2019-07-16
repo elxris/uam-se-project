@@ -19,6 +19,13 @@ class Modelo_pregunta extends CI_Model {
 		$this->db->where('idPregunta',$id);
 		$this->db->delete('pregunta');
 	}
+
+	function obtenerPregunta($id){
+		$this->db->where('idPregunta',$id);
+        $query = $this->db->get('pregunta');
+		if($query -> num_rows() > 0) return $query;
+		else return false; 
+	}
 }
 
 ?>

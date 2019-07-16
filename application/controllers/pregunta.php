@@ -9,9 +9,10 @@ class Pregunta extends CI_Controller {
 	}
 
 	public function index(){
+				$data['preguntas'] = $this->modelo_pregunta->obtenerPreguntas();
                 $this->load->view('headers');
                 $this->load->view('navbar');
-		$this->load->view('pregunta/AgregarPregunta');
+				$this->load->view('pregunta/listaPreguntas',$data);
                 $this->load->view('footer');
 	}
 
@@ -20,26 +21,26 @@ class Pregunta extends CI_Controller {
 				'Nombre' => $this->input->post('Nombre'),
 				'Descripcion' => $this->input->post('Desc')
 		);
-		$this->modelo_pregunta->crearPregunta($data);
+				$this->modelo_pregunta->crearPregunta($data);
                 $this->load->view('headers');
                 $this->load->view('navbar');
-		$this->load->view('pregunta/AgregarPregunta');
+				$this->load->view('pregunta/AgregarPregunta');
                 $this->load->view('footer');
 	}
 	public function verPreguntas(){
-		$data['preguntas'] = $this->modelo_pregunta->obtenerPreguntas();
+				$data['preguntas'] = $this->modelo_pregunta->obtenerPreguntas();
                 $this->load->view('headers');
                 $this->load->view('navbar');
-		$this->load->view('pregunta/eliminarPregunta',$data);
+				$this->load->view('pregunta/eliminarPregunta',$data);
                 $this->load->view('footer');
 	}
 	public function eliminar(){
-		$id = $this->uri->segment(3);
-		$this->modelo_pregunta->eliminaPregunta($id);
-		$data['preguntas'] = $this->modelo_pregunta->obtenerPreguntas();
-		$this->load->view('headers');
+				$id = $this->uri->segment(3);
+				$this->modelo_pregunta->eliminaPregunta($id);
+				$data['preguntas'] = $this->modelo_pregunta->obtenerPreguntas();
+				$this->load->view('headers');
                 $this->load->view('navbar');
-		$this->load->view('pregunta/eliminarPregunta',$data);
+				$this->load->view('pregunta/listaPreguntas',$data);
                 $this->load->view('footer');
     }
 }
