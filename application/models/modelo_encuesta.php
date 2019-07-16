@@ -17,4 +17,25 @@ class modelo_encuesta extends CI_Model{
     function guardarEncuesta($data){
         $this->db->insert('encuesta', $data);
     }
+    
+    function obtenerEncuesta($idEncuesta){
+	$this->db->where('idEncuesta', $idEncuesta);
+	$query = $this->db->get('encuesta');
+	
+	if($query->num_rows() > 0)
+            return $query;
+	else
+            return FALSE;
+    }
+    
+    function modificarEncuesta($idEncuesta, $data){
+        $this->db->where('idEncuesta', $idEncuesta);
+        $this->db->update('encuesta', $data);
+    }
+    
+    function eliminaEncuesta($idEncuesta){
+        $this->db->where('idEncuesta', $idEncuesta);
+        $this->db->delete('encuesta');
+        redirect('/encuesta/verTodo');
+    }
 }

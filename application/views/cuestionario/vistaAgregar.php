@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8">
       <h3>Agregar Cuestionario</h3>
-        <form class="form-horizontal" role="form" id="form" name="form" action="<?=base_url()?>cuestionario/guardar" method="POST">
+        <form class="form-horizontal" role="form" id="form" name="form" action="<?=base_url("/cuestionario/guardar")?>" method="POST">
           <div class="form-group">
             <label form="inputEmail3" class="col-sm-4 control-label">Nombre del cuestionario:  </label>
             <div class="col-sm-8">

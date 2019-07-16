@@ -12,13 +12,9 @@
           <li><a href="/uam-se-project/respuesta/verRespuestas">Eliminar Respuesta</a></li>
         </ul>
       </li>
-      <li>
-        <a href="<?= base_url('/pregunta/')?>"><span class="glyphicon glyphicon-question-sign"></span>Preguntas</a>
-      </li>
-      <li><a href="<?= base_url('/cuestionario/') ?>"><span class="glyphicon glyphicon-check"></span> Cuestionarios</a></li>
-      <li class="dropdown">
-          <a href="encuesta/verTodo">Encuestas <span class="caret"></span></a>
-        </ul>
+      <li><a href="<?= base_url('/pregunta')?>"><span class="glyphicon glyphicon-question-sign"></span> Preguntas</a></li>
+      <li><a href="<?= base_url('/cuestionario') ?>"><span class="glyphicon glyphicon-check"></span> Cuestionarios</a></li>
+      <li><a href="/encuesta/verTodo"><span class="glyphicon glyphicon-list-alt"> Encuestas</a></ul>
       </li>
     </ul>
   </div>
