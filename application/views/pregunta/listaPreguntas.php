@@ -23,14 +23,6 @@
         <h1>Preguntas</h1>
         <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>Agregar</button>
     </div>          
-<?php 
-    $test = 'prueba de test';
-    $botonGuardar = array(
-            'value' => 'Registrar',
-            'name' => '' ,
-            'class' => 'btn btn-primary'
-    );
-?>
             <table class="table">
                 <thead>
                      <tr>

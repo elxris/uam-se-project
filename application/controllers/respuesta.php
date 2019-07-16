@@ -50,4 +50,16 @@ class Respuesta extends CI_Controller {
         $this->load->view('footer');
 	}
 
+    public function eliminar(){
+                $id = $this->uri->segment(3);
+                $idP = $this->uri->segment(4);
+                $this->modelo_respuesta->eliminaRespuesta($id);
+                $data['respuestas'] = $this->modelo_respuesta->obtenerRespuestas($idP);
+                $data['pregunta'] = $this->modelo_pregunta->obtenerPregunta($idP);
+                $this->load->view('headers');
+                $this->load->view('navbar');
+                $this->load->view('respuesta/listaRespuestas',$data,$data);
+                $this->load->view('footer');
+    }
+
 }
