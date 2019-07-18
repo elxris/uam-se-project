@@ -1,65 +1,84 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 05-07-2019 a las 01:40:47
--- Versión del servidor: 5.6.21
--- Versión de PHP: 5.6.3
+-- Host: localhost
+-- Generation Time: Jul 18, 2019 at 06:12 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `encuestas`
+-- Database: `encuestas`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cuestionario`
+-- Table structure for table `contestacion`
 --
 
-CREATE TABLE IF NOT EXISTS `cuestionario` (
-`idCuestionario` int(11) NOT NULL,
-  `nombreCuestionario` varchar(600) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `cuestionario`
---
-
-INSERT INTO `cuestionario` (`idCuestionario`, `nombreCuestionario`) VALUES
-(1, 'Cuál es ese pokémon'),
-(2, 'Demográfico de Estudiantes');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `cuestionario_levantado`
---
-
-CREATE TABLE IF NOT EXISTS `cuestionario_levantado` (
+CREATE TABLE `contestacion` (
   `idEncuesta` int(11) NOT NULL,
-  `idEncuestador` int(11) NOT NULL,
-`idCuestionarioLevantado` int(11) NOT NULL,
-  `fechaCuestionarioLevantado` date NOT NULL
+  `idUsuario` int(11) NOT NULL,
+  `idContestacion` int(11) NOT NULL,
+  `fecha_inicio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `encuesta`
+-- Table structure for table `contestacion_usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS `encuesta` (
-`idEncuesta` int(11) NOT NULL,
+CREATE TABLE `contestacion_usuarios` (
+  `idEncuesta` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `idContestacion` int(11) NOT NULL,
+  `idPregunta` int(11) NOT NULL,
+  `idRespuesta` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cuestionario`
+--
+
+CREATE TABLE `cuestionario` (
+  `idCuestionario` int(11) NOT NULL,
+  `nombreCuestionario` varchar(600) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cuestionario`
+--
+
+INSERT INTO `cuestionario` (`idCuestionario`, `nombreCuestionario`) VALUES
+(1, ''),
+(2, ''),
+(3, 'Tercer Cuestionario'),
+(4, 'Cuarto Cuestionario');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `encuesta`
+--
+
+CREATE TABLE `encuesta` (
+  `idEncuesta` int(11) NOT NULL,
   `nombreEncuesta` varchar(600) NOT NULL,
   `fechaInicio` date NOT NULL,
   `fechaFin` date NOT NULL,
@@ -69,10 +88,10 @@ CREATE TABLE IF NOT EXISTS `encuesta` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `encuestador_encuesta`
+-- Table structure for table `encuestador_encuesta`
 --
 
-CREATE TABLE IF NOT EXISTS `encuestador_encuesta` (
+CREATE TABLE `encuestador_encuesta` (
   `idEncuesta` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -80,251 +99,253 @@ CREATE TABLE IF NOT EXISTS `encuestador_encuesta` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pregunta`
+-- Table structure for table `pregunta`
 --
 
-CREATE TABLE IF NOT EXISTS `pregunta` (
-`idPregunta` int(11) NOT NULL,
+CREATE TABLE `pregunta` (
+  `idPregunta` int(11) NOT NULL,
   `nombreCortoPregunta` varchar(200) NOT NULL,
   `descripcionPregunta` varchar(4000) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `pregunta`
+-- Dumping data for table `pregunta`
 --
 
 INSERT INTO `pregunta` (`idPregunta`, `nombreCortoPregunta`, `descripcionPregunta`) VALUES
-(1, 'Or?', '...');
+(1, 'Hello', 'Hi'),
+(2, 'Lmao', 'What'),
+(3, 'Tercera', 'y terminamos');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pregunta_cuestionario`
+-- Table structure for table `pregunta_cuestionario`
 --
 
-CREATE TABLE IF NOT EXISTS `pregunta_cuestionario` (
+CREATE TABLE `pregunta_cuestionario` (
   `idPregunta` int(11) NOT NULL,
   `idCuestionario` int(11) NOT NULL,
   `secuencia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `pregunta_cuestionario`
+-- Dumping data for table `pregunta_cuestionario`
 --
 
 INSERT INTO `pregunta_cuestionario` (`idPregunta`, `idCuestionario`, `secuencia`) VALUES
-(1, 1, 1);
+(1, 4, 12),
+(2, 4, 9),
+(3, 4, 13);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `respuesta`
+-- Table structure for table `respuesta`
 --
 
-CREATE TABLE IF NOT EXISTS `respuesta` (
-`idRespuesta` int(11) NOT NULL,
-  `idPregunta` int(11) NOT NULL,
-  `nombreRespuesta` varchar(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `respuesta`
---
-
-INSERT INTO `respuesta` (`idRespuesta`, `idPregunta`, `nombreRespuesta`) VALUES
-(1, 1, 'Respuesta');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `respuesta_encuesta`
---
-
-CREATE TABLE IF NOT EXISTS `respuesta_encuesta` (
+CREATE TABLE `respuesta` (
   `idRespuesta` int(11) NOT NULL,
   `idPregunta` int(11) NOT NULL,
-  `idEncuesta` int(11) NOT NULL,
-  `idCuestionarioLevantado` int(11) NOT NULL
+  `nombreRespuesta` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
+-- Table structure for table `roles`
 --
 
-CREATE TABLE IF NOT EXISTS `roles` (
-`idRol` int(11) NOT NULL,
+CREATE TABLE `roles` (
+  `idRol` int(11) NOT NULL,
   `nombreRol` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
-`idUsuario` int(11) NOT NULL,
+CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL,
   `nombreUsuario` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `idRol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `cuestionario`
+-- Indexes for table `contestacion`
+--
+ALTER TABLE `contestacion`
+  ADD PRIMARY KEY (`idContestacion`,`idUsuario`,`idEncuesta`),
+  ADD KEY `idEncuesta` (`idEncuesta`),
+  ADD KEY `idUsuario` (`idUsuario`);
+
+--
+-- Indexes for table `contestacion_usuarios`
+--
+ALTER TABLE `contestacion_usuarios`
+  ADD PRIMARY KEY (`idEncuesta`,`idUsuario`,`idContestacion`,`idPregunta`,`idRespuesta`),
+  ADD KEY `idPregunta` (`idPregunta`,`idRespuesta`),
+  ADD KEY `idContestacion` (`idContestacion`),
+  ADD KEY `idUsuario` (`idUsuario`);
+
+--
+-- Indexes for table `cuestionario`
 --
 ALTER TABLE `cuestionario`
- ADD PRIMARY KEY (`idCuestionario`);
+  ADD PRIMARY KEY (`idCuestionario`);
 
 --
--- Indices de la tabla `cuestionario_levantado`
---
-ALTER TABLE `cuestionario_levantado`
- ADD PRIMARY KEY (`idCuestionarioLevantado`), ADD KEY `idEncuesta` (`idEncuesta`), ADD KEY `idEncuestador` (`idEncuestador`);
-
---
--- Indices de la tabla `encuesta`
+-- Indexes for table `encuesta`
 --
 ALTER TABLE `encuesta`
- ADD PRIMARY KEY (`idEncuesta`), ADD KEY `idCuestionario` (`idCuestionario`);
+  ADD PRIMARY KEY (`idEncuesta`),
+  ADD KEY `idCuestionario` (`idCuestionario`);
 
 --
--- Indices de la tabla `encuestador_encuesta`
+-- Indexes for table `encuestador_encuesta`
 --
 ALTER TABLE `encuestador_encuesta`
- ADD PRIMARY KEY (`idEncuesta`,`idUsuario`), ADD KEY `idUsuario` (`idUsuario`);
+  ADD PRIMARY KEY (`idEncuesta`,`idUsuario`),
+  ADD KEY `idUsuario` (`idUsuario`);
 
 --
--- Indices de la tabla `pregunta`
+-- Indexes for table `pregunta`
 --
 ALTER TABLE `pregunta`
- ADD PRIMARY KEY (`idPregunta`);
+  ADD PRIMARY KEY (`idPregunta`);
 
 --
--- Indices de la tabla `pregunta_cuestionario`
+-- Indexes for table `pregunta_cuestionario`
 --
 ALTER TABLE `pregunta_cuestionario`
- ADD PRIMARY KEY (`idPregunta`,`idCuestionario`), ADD KEY `idCuestionario` (`idCuestionario`);
+  ADD PRIMARY KEY (`idPregunta`,`idCuestionario`),
+  ADD KEY `idCuestionario` (`idCuestionario`);
 
 --
--- Indices de la tabla `respuesta`
+-- Indexes for table `respuesta`
 --
 ALTER TABLE `respuesta`
- ADD PRIMARY KEY (`idRespuesta`,`idPregunta`), ADD KEY `idPregunta` (`idPregunta`);
+  ADD PRIMARY KEY (`idRespuesta`,`idPregunta`),
+  ADD KEY `idPregunta` (`idPregunta`);
 
 --
--- Indices de la tabla `respuesta_encuesta`
---
-ALTER TABLE `respuesta_encuesta`
- ADD PRIMARY KEY (`idEncuesta`,`idRespuesta`,`idPregunta`,`idCuestionarioLevantado`), ADD KEY `idPregunta` (`idPregunta`), ADD KEY `idRespuesta` (`idRespuesta`), ADD KEY `idCuestionarioLevantado` (`idCuestionarioLevantado`), ADD KEY `idEncuesta` (`idEncuesta`);
-
---
--- Indices de la tabla `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
- ADD PRIMARY KEY (`idRol`);
+  ADD PRIMARY KEY (`idRol`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
- ADD PRIMARY KEY (`idUsuario`), ADD KEY `idRol` (`idRol`);
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD KEY `idRol` (`idRol`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `cuestionario`
+-- AUTO_INCREMENT for table `contestacion`
+--
+ALTER TABLE `contestacion`
+  MODIFY `idContestacion` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cuestionario`
 --
 ALTER TABLE `cuestionario`
-MODIFY `idCuestionario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `idCuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- AUTO_INCREMENT de la tabla `cuestionario_levantado`
---
-ALTER TABLE `cuestionario_levantado`
-MODIFY `idCuestionarioLevantado` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `encuesta`
+-- AUTO_INCREMENT for table `encuesta`
 --
 ALTER TABLE `encuesta`
-MODIFY `idEncuesta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEncuesta` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT de la tabla `pregunta`
+-- AUTO_INCREMENT for table `pregunta`
 --
 ALTER TABLE `pregunta`
-MODIFY `idPregunta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `idPregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT de la tabla `respuesta`
+-- AUTO_INCREMENT for table `respuesta`
 --
 ALTER TABLE `respuesta`
-MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT de la tabla `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `cuestionario_levantado`
+-- Constraints for table `contestacion`
 --
-ALTER TABLE `cuestionario_levantado`
-ADD CONSTRAINT `cuestionario_levantado_ibfk_1` FOREIGN KEY (`idEncuesta`) REFERENCES `encuesta` (`idEncuesta`),
-ADD CONSTRAINT `cuestionario_levantado_ibfk_2` FOREIGN KEY (`idEncuestador`) REFERENCES `usuario` (`idUsuario`);
+ALTER TABLE `contestacion`
+  ADD CONSTRAINT `contestacion_ibfk_1` FOREIGN KEY (`idEncuesta`) REFERENCES `encuesta` (`idEncuesta`),
+  ADD CONSTRAINT `contestacion_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
 
 --
--- Filtros para la tabla `encuesta`
+-- Constraints for table `contestacion_usuarios`
+--
+ALTER TABLE `contestacion_usuarios`
+  ADD CONSTRAINT `contestacion_usuarios_ibfk_1` FOREIGN KEY (`idPregunta`,`idRespuesta`) REFERENCES `respuesta` (`idPregunta`, `idRespuesta`),
+  ADD CONSTRAINT `contestacion_usuarios_ibfk_2` FOREIGN KEY (`idContestacion`) REFERENCES `contestacion` (`idContestacion`),
+  ADD CONSTRAINT `contestacion_usuarios_ibfk_3` FOREIGN KEY (`idEncuesta`) REFERENCES `encuesta` (`idEncuesta`),
+  ADD CONSTRAINT `contestacion_usuarios_ibfk_4` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
+
+--
+-- Constraints for table `encuesta`
 --
 ALTER TABLE `encuesta`
-ADD CONSTRAINT `encuesta_ibfk_1` FOREIGN KEY (`idCuestionario`) REFERENCES `cuestionario` (`idCuestionario`);
+  ADD CONSTRAINT `encuesta_ibfk_1` FOREIGN KEY (`idCuestionario`) REFERENCES `cuestionario` (`idCuestionario`);
 
 --
--- Filtros para la tabla `encuestador_encuesta`
+-- Constraints for table `encuestador_encuesta`
 --
 ALTER TABLE `encuestador_encuesta`
-ADD CONSTRAINT `encuestador_encuesta_ibfk_1` FOREIGN KEY (`idEncuesta`) REFERENCES `encuesta` (`idEncuesta`),
-ADD CONSTRAINT `encuestador_encuesta_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
+  ADD CONSTRAINT `encuestador_encuesta_ibfk_1` FOREIGN KEY (`idEncuesta`) REFERENCES `encuesta` (`idEncuesta`),
+  ADD CONSTRAINT `encuestador_encuesta_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
 
 --
--- Filtros para la tabla `pregunta_cuestionario`
+-- Constraints for table `pregunta_cuestionario`
 --
 ALTER TABLE `pregunta_cuestionario`
-ADD CONSTRAINT `pregunta_cuestionario_ibfk_1` FOREIGN KEY (`idCuestionario`) REFERENCES `cuestionario` (`idCuestionario`),
-ADD CONSTRAINT `pregunta_cuestionario_ibfk_2` FOREIGN KEY (`idPregunta`) REFERENCES `pregunta` (`idPregunta`);
+  ADD CONSTRAINT `pregunta_cuestionario_ibfk_1` FOREIGN KEY (`idCuestionario`) REFERENCES `cuestionario` (`idCuestionario`),
+  ADD CONSTRAINT `pregunta_cuestionario_ibfk_2` FOREIGN KEY (`idPregunta`) REFERENCES `pregunta` (`idPregunta`);
 
 --
--- Filtros para la tabla `respuesta`
+-- Constraints for table `respuesta`
 --
 ALTER TABLE `respuesta`
-ADD CONSTRAINT `respuesta_ibfk_1` FOREIGN KEY (`idPregunta`) REFERENCES `pregunta` (`idPregunta`);
+  ADD CONSTRAINT `respuesta_ibfk_1` FOREIGN KEY (`idPregunta`) REFERENCES `pregunta` (`idPregunta`);
 
 --
--- Filtros para la tabla `respuesta_encuesta`
---
-ALTER TABLE `respuesta_encuesta`
-ADD CONSTRAINT `respuesta_encuesta_ibfk_1` FOREIGN KEY (`idEncuesta`) REFERENCES `encuesta` (`idEncuesta`),
-ADD CONSTRAINT `respuesta_encuesta_ibfk_2` FOREIGN KEY (`idPregunta`) REFERENCES `pregunta` (`idPregunta`),
-ADD CONSTRAINT `respuesta_encuesta_ibfk_3` FOREIGN KEY (`idRespuesta`) REFERENCES `respuesta` (`idRespuesta`),
-ADD CONSTRAINT `respuesta_encuesta_ibfk_4` FOREIGN KEY (`idCuestionarioLevantado`) REFERENCES `cuestionario_levantado` (`idCuestionarioLevantado`);
-
---
--- Filtros para la tabla `usuario`
+-- Constraints for table `usuario`
 --
 ALTER TABLE `usuario`
-ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `roles` (`idRol`);
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `roles` (`idRol`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
