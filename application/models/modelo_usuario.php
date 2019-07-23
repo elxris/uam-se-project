@@ -22,4 +22,10 @@ class modelo_usuario extends CI_Model{
         else
             return FALSE;
     }
+    
+    function crearUsuario($data){
+        #if($data['Nombre'] != '0'){
+            $this->db->insert('usuario',array('nombreUsuario' => $data['Nombre'], 'password' => $data['Pass'], 'idRol' => $data['Rol']));
+        #}
+    }
 }
