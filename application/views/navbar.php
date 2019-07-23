@@ -7,8 +7,8 @@
     <ul class="nav navbar-nav">
       <li><a href="<?= base_url('/pregunta')?>"><span class="glyphicon glyphicon-question-sign"></span> Preguntas</a></li>
       <li><a href="<?= base_url('/cuestionario') ?>"><span class="glyphicon glyphicon-check"></span> Cuestionarios</a></li>
-      <li><a href="<?= base_url('/encuesta/verTodo') ?>"><span class="glyphicon glyphicon-list-alt"> Encuestas</a></ul>
-      </li>
+      <li><a href="<?= base_url('/encuesta/verTodo') ?>"><span class="glyphicon glyphicon-list-alt"></span> Encuestas</a></li>
+      <li><a href="<?= base_url('/contestacion/seleccion') ?>"><span class="glyphicon glyphicon-eye-open"></span> Encuestas-Encuestador</a></li>
     </ul>
   </div>
 </nav>

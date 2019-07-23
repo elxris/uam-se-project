@@ -15,8 +15,14 @@
                 <label class="col-4">Descripción de la Encuesta: </label>
                 <div class="col-4">
                     <textarea type="text" class="form-control" id="descripcionEncuestaEncuesta" name="descripcionEncuesta" rows="7" required><?=$descripcionEncuesta?></textarea>
-                    <!--<input type="text" class="form-control" id="descripcionEncuesta" name="descripcionEncuesta" rows="6" required>-->
                 </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-4">Número de Aplicaciones: </label>
+                <div class="col-4">
+                    <input type="text" class="form-control" id="numeroAplicacion" name="numeroAplicacion" value="<?=$numeroAplicacion?>" autocomplete="off" required>
+                </div>    
             </div>
         </div>
         <br>
@@ -39,7 +45,6 @@
             <label class="col-4">Cuestionario Asociado: </label>
             <div class="col-4">
                 <select class="form-control" name="idCuestionario" id="idCuestionario" required>
-                    <!--<option value="" disabled selected> Seleccione un cuestionario </option>-->
                     <option value="" disabled selected> Seleccione un Cuestionario</option>
                     <?php
                     if($cuestionario != FALSE){
@@ -54,7 +59,6 @@
                 </select>
             </div>
         </div>
-        
         <div class="text-center">
             <button type="submit" class="btn btn-primary" id="guardar" name="guardar"> 
                 <samp class="glyphicon glyphicon-edit" aria-heidden="TRUE"></samp> Editar Encuesta    

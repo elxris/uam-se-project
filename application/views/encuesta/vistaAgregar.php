@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="form-horizontal" role="form" id="form" name="form" action="<?=base_url()?>encuesta/guardar" method="POST">
+    <form class="form-horizontal" role="form" id="form" name="form" action="<?=base_url('/encuesta/guardar')?>" method="POST">
         <div class="col-4">
             <h1 class="text-center">Agregar Encuesta</h1>
             <br>
@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label class="col-4">Nombre la Encuesta:  </label>
                 <div class="col-4">
-                    <input type="text" class="form-control" id="nombreEncuesta" name="nombreEncuesta" placeholder="Ingresa el nombre de la encuesta" required>
+                    <input type="text" class="form-control" id="nombreEncuesta" name="nombreEncuesta" placeholder="Ingresa el nombre de la encuesta" autocomplete="off" required="">
                 </div>
             </div>
             <br>
@@ -16,6 +16,13 @@
                 <div class="col-4">
                     <textarea type="text" class="form-control" id="descripcionEncuesta" name="descripcionEncuesta" rows="7" placeholder="Ingrese una descripcion de la encuesta" required></textarea>
                 </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-4">Número de Aplicaciones: </label>
+                <div class="col-4">
+                    <input type="text" class="form-control" id="numeroAplicacion" name="numeroAplicacion" placeholder="# Aplicaciones" required autocomplete="off">
+                </div>    
             </div>
         </div>
         <br>
