@@ -10,42 +10,55 @@ class Contestar extends CI_Controller {
 
     public function index(){
         $idContestacion = $this->uri->segment(3);
-        $numPregunta = $this->url->segment(4);
-        if ($numPregunta) {
+        $numPregunta = $this->uri->segment(4);
+        if ($numPregunta != '') {
+            $pregunta = $this->modelo_contestar->obtenerPregunta($idContestacion, $numPregunta);
+            if (!$pregunta) {
+                return redirect('/contestar/fin/'.$idContestacion);
+            }
             $data = array(
-                'pregunta' => $this->modelo_contestar->obtenerPregunta($idContestacion, $numPregunta),
+                'pregunta' => $pregunta,
                 'datos' => $this->modelo_contestar->obtenerEncuesta($idContestacion),
+                'respuestas' => $this->modelo_contestar->getRespuestas($idContestacion, $pregunta->idPregunta),
                 'idContestacion' => $idContestacion,
                 'numPregunta' => $numPregunta
             );
+            if ($data['respuestas']->num_rows() == 0) {
+                return redirect("/contestar/index/".$idContestacion."/".($numPregunta + 1));
+            }
             $this->load->view('headers');
-            $this->load->view('navbar');
             $this->load->view('contestar/pregunta', $data);
             $this->load->view('footer');
         } else {
             $data = array(
                 'datos' => $this->modelo_contestar->obtenerEncuesta($idContestacion),
-                'idContestacion' => $idContestacion,
-                'numPregunta' => $numPregunta
+                'idContestacion' => $idContestacion
             );
             $this->load->view('headers');
-            $this->load->view('navbar');
             $this->load->view('contestar/bienvenida', $data);
             $this->load->view('footer');
         }
     }
+
+    public function fin(){
+        $this->load->view('headers');
+        $this->load->view('contestar/fin');
+        $this->load->view('footer');
+    }
     
     public function guardarRespuesta()
     {
+        $idContestacion = $this->input->post('idContestacion', TRUE);
+        $nextPregunta = $this->input->post("nextPregunta", TRUE);
         $data = array(
             'idEncuesta' => $this->input->post('idEncuesta', TRUE),
             'idUsuario' => $this->input->post('idUsuario', TRUE),
-            'idContestacion' => $this->input->post('idContestacion', TRUE),
+            'idContestacion' => $idContestacion,
             'idPregunta' => $this->input->post('idPregunta', TRUE),
             'idRespuesta' => $this->input->post('idRespuesta', TRUE),
         );
         $this->modelo_contestar->guardarRespuesta($data);
-        redirect('/contestar/'.$this->input->post('idContestacion', TRUE).'/'.$this->input->post('nextPregunta', TRUE));
+        redirect("/contestar/index/{$idContestacion}/{$nextPregunta}");
     }
 
 }
