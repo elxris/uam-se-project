@@ -7,6 +7,7 @@ class Encuesta extends CI_Controller {
         $this->load->helper('url');
         $this->load->model('modelo_encuesta');
         $this->load->model('modelo_cuestionario');
+        $this->load->model('modelo_usuario');
     }
 
     public function index(){
@@ -41,6 +42,7 @@ class Encuesta extends CI_Controller {
         $data = array(
             'nombreEncuesta'      => $this->input->post('nombreEncuesta'),
             'descripcionEncuesta' => $this->input->post('descripcionEncuesta'),
+            'numeroAplicacion'    => $this->input->post('numeroAplicacion'),
             'fechaInicio'         => $this->input->post('fechaInicio'),
             'fechaFin'            => $this->input->post('fechaFin'),
             'idCuestionario'      => $this->input->post('idCuestionario')
@@ -58,6 +60,7 @@ class Encuesta extends CI_Controller {
             foreach($encuesta->result() as $row){
                 $nombreEncuesta      = $row->nombreEncuesta;
                 $descripcionEncuesta = $row->descripcionEncuesta;
+                $numeroAplicacion    = $row->numeroAplicacion;
                 $fechaInicio         = $row->fechaInicio;
                 $fechaFin            = $row->fechaFin;
                 $idCuestionario      = $row->idCuestionario;
@@ -66,6 +69,7 @@ class Encuesta extends CI_Controller {
                 'idEncuesta'          => $idEncuesta,
                 'nombreEncuesta'      => $nombreEncuesta,
                 'descripcionEncuesta' => $descripcionEncuesta,
+                'numeroAplicacion'    => $numeroAplicacion,
                 'fechaInicio'         => $fechaInicio,
                 'fechaFin'            => $fechaFin,
                 'idCuestionario'      => $idCuestionario
@@ -88,6 +92,7 @@ class Encuesta extends CI_Controller {
         $data = array(
             'nombreEncuesta'      => $this->input->post('nombreEncuesta', true),
             'descripcionEncuesta' => $this->input->post('descripcionEncuesta', true),
+            'numeroAplicacion'    => $this->input->post('numeroAplicacion', true),
             'fechaInicio'         => $this->input->post('fechaInicio', true),
             'fechaFin'            => $this->input->post('fechaFin', true),
             'idCuestionario'      => $this->input->post('idCuestionario', true)
