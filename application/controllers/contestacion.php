@@ -37,7 +37,8 @@ class Contestacion extends CI_Controller {
             'idUsuario' => $this->input->post('idUsuario', TRUE)
         );
         
-        $this->modelo_contestacion->guardarContestacion($data);
-        redirect('contestacion/seleccion');
+        $idContestacion = $this->modelo_contestacion->guardarContestacion($data);
+        
+        redirect("/contestar/index/{$idContestacion}");
     }
 }

@@ -8,5 +8,6 @@ class modelo_contestacion extends CI_Model{
     
     function guardarContestacion($data){
         $this->db->insert('contestacion', $data);
+        return $this->db->insert_id();
     }
 }
